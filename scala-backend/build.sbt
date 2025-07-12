@@ -40,3 +40,11 @@ lazy val root = (project in file("."))
       "com.typesafe.akka" %% "akka-testkit" % "2.8.5" % Test
     )
   )
+
+// Configuration pour sbt-assembly (fat JAR)
+import sbtassembly.AssemblyPlugin.autoImport._
+
+assemblyMergeStrategy in assembly := {
+  case PathList("reference.conf") => MergeStrategy.concat
+  case x => MergeStrategy.first
+}
