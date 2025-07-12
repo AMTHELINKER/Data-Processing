@@ -40,15 +40,11 @@ object Main extends App with LazyLogging {
   bindingFuture.onComplete {
     case Success(binding) =>
       logger.info(s"Server online at http://$host:$port/")
-      logger.info("Press RETURN to stop...")
     case Failure(ex) =>
       logger.error("Failed to bind HTTP endpoint", ex)
       system.terminate()
   }
   
-  // Graceful shutdown
-  scala.io.StdIn.readLine()
-  bindingFuture
-    .flatMap(_.unbind())
-    .onComplete(_ => system.terminate())
+  // Attendre la terminaison de l'ActorSystem pour garder l'application vivante
+  system.whenTerminated.foreach(_ => logger.info("Server stopped"))
 }
