@@ -33,7 +33,7 @@ function App() {
 
     try {
       // Appel réel à l'API Scala
-      const response = await fetch('http://localhost:8080/api/process', {
+      const response = await fetch('https://data-processing-vr06.onrender.com/api/process', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ function App() {
 
   const handleCheckStatus = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/status/${id}`);
+      const response = await fetch(`https://data-processing-vr06.onrender.com/api/status/${id}`);
       const status = await response.json();
       alert(`Statut: ${status.status}\nProgression: ${status.progress}%\nÉtape: ${status.currentStep}`);
     } catch (error) {
