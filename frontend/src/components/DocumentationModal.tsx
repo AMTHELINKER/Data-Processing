@@ -12,7 +12,7 @@ const DocumentationModal: React.FC<{ show: boolean; onClose: () => void }> = ({ 
           </div>
           <div className="modal-body" style={{ maxHeight: '70vh', overflowY: 'auto' }}>
             <h6 className="fw-bold">Base URL</h6>
-            <code>http://localhost:8080/api</code>
+            <code>https://data-processing-vr06.onrender.com/api</code>
             <hr />
             <h6 className="fw-bold">Endpoints principaux</h6>
             <ul>
