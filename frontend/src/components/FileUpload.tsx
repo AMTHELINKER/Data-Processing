@@ -11,7 +11,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
 
   const validateFile = (file: File): boolean => {
     const allowedTypes = ['text/csv', 'application/json', 'text/xml', 'application/xml'];
-    const maxSize = 100 * 1024 * 1024; // 100MB
+    const maxSize = 50 * 1024 * 1024; // 50MB
 
     if (!allowedTypes.includes(file.type) && !file.name.match(/\.(csv|json|xml)$/i)) {
       setError('Format de fichier non supporté. Utilisez CSV, JSON ou XML.');
@@ -19,7 +19,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
     }
 
     if (file.size > maxSize) {
-      setError('Le fichier est trop volumineux. Taille maximum: 100MB.');
+      setError('Le fichier est trop volumineux. Taille maximum: 50MB.');
       return false;
     }
 
@@ -113,7 +113,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
               </div>
             </div>
             
-            <p className="text-muted small mb-0">Taille maximum: 100MB</p>
+            <p className="text-muted small mb-0">Taille maximum: 50MB</p>
           </div>
         </div>
 
